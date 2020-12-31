@@ -85,8 +85,7 @@ class Sign
 
         $csign = sprintf('%s-%s-%s-%d-%s-%s', $requestURI, $requestBodyMD5, $secretKey, $ctimestamp, $cnonce, $cappkey);
         $sign = md5($csign);
-
-        Log::useFiles(storage_path('kuangshi.log'), 'info');
+       
         Log::info('sign params:', [
             'A' => $requestURI,
             'D' => $requestBodyMD5,
