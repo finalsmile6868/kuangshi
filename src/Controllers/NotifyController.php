@@ -14,8 +14,7 @@ class NotifyController extends Controller
 
     public function index(Request $request)
     {
-        try {
-            Log::useFiles(storage_path('logs/kuangshi.log'), 'info');
+        try {            
             Log::info('kuangshi_notify', $request->all());
 
             // $response_json = '{"data":"测试数据","retryTimes":0,"traceId":"892e919f2f544b7ab1100a627da38a17","type":1}';

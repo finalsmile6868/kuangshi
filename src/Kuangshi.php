@@ -52,8 +52,7 @@ class Kuangshi
         ];
         $response = $client->post($uri, $options);
 
-        $contents = $response->getBody()->getContents();
-        Log::useFiles(storage_path('logs/kuangshi.log'), 'info');
+        $contents = $response->getBody()->getContents();        
         Log::info('request_result',[
             'uri'=>$uri,
             'options'=>$options,

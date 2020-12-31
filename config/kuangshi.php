@@ -6,6 +6,6 @@ return [
     
     'route'=>[
         'prefix'=>'ks',
-        'middleware'=>'',
+        'middleware'=>config('admin.route.middleware'),
     ],
 ];
