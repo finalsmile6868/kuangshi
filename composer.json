@@ -1,0 +1,21 @@
+{
+    "name": "finalsmile6868/kuangshi",
+    "description": "kuangshi face detect",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kongkong",
+            "email": "wangwenxin6868@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle":"~7.2.0",
+        "encore/laravel-admin":"~1.7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Finalsmile6868\\Kuangshi\\":"src/"
+        }
+    }
+}
