@@ -1,14 +1,18 @@
 <?php
 
-namespace Finalsmile6868\Kuangshi\Events;
+namespace App\Events;
 
-use Finalsmile6868\Kuangshi\Models\KuangshiEventRecord;
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 class KuangshiEvent
 {
-    use SerializesModels;
-
+    use Dispatchable, InteractsWithSockets, SerializesModels;
     public $data;
 
     /**
@@ -16,10 +20,18 @@ class KuangshiEvent
      *
      * @return void
      */
-    public function __construct(KuangshiEventRecord $record)
+    public function __construct($data)
     {
-        $this->data = $record->toArray();
+        $this->data = $data;
     }
 
-    
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
 }

@@ -12,6 +12,7 @@ app('router')->group($attrs, function ($router) {
 
     $router->resource('person',\Finalsmile6868\Kuangshi\Controllers\PersonController::class);
     $router->get('sync-person','\Finalsmile6868\Kuangshi\Controllers\PersonController@sync');
+    $router->resource('event',\Finalsmile6868\Kuangshi\Controllers\EventRecordController::class);
 });
 
 
