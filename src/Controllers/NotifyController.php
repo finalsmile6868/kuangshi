@@ -28,6 +28,7 @@ class NotifyController extends Controller
             $response_body = $request->all();
             // // $notify_data = json_decode($notify_data_json,true);
             // // dump($notify_data['data'][0]);
+            //验证回调签名
             $check = Sign::notifyCheck(json_encode($response_body), $cnonce, $ctimestamp, $csign);
             if (!$check) {
                 Log::warning('kuangshi:notify:error', [
@@ -35,14 +36,16 @@ class NotifyController extends Controller
                     'header' => $request->header(),
                 ]);
             }
-
+            //判断是否同行回调通知
             if ($response_body['type'] == 2) {
                 $record_data = $response_body['data'][0];
                 if (key_exists('id', $record_data)) {
                     $record_data['record_id'] = $record_data['id'];
                     unset($record_data['id']);
                 }
+                //保存事件回调记录到数据库表
                 $record = ModelsKuangshiEventRecord::create($record_data);
+                //发送事件通知
                 event(new KuangshiEvent($record));
             }
 

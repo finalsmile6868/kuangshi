@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Finalsmile6868\Kuangshi\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;

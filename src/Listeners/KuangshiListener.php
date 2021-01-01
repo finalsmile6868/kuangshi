@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Listeners;
+namespace Finalsmile6868\Kuangshi\Listeners;
 
 use App\Events\KuangshiEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
