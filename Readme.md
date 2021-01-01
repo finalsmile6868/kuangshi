@@ -26,8 +26,14 @@
 
 8. 旷视的事件回调，目前支持人员事件；默认回调路由 /ks/notify.
 
-   在收到事件回调后，回写入kuangshi_event_record表，然后发出一个事件通知：Finalsmile6868\Kuangshi\Events\KuangshiEvent.php
-
+   在收到事件回调后，回写入kuangshi_event_record表，然后发出一个事件通知：Finalsmile6868\Kuangshi\Events\KuangshiEvent.php;
+   要接收此事件，需要在app/Providers/EventServiceProvider.php指定要接收的时间，例如：
+      ```php
+'Finalsmile6868\Kuangshi\Events\KuangshiEvent'=>[
+     'App\Listeners\KuangshiListener',//改为接收事件的Listener
+ ],
+   ```
+	可以参考Finalsmile6868\Kuangshi\Linsteners\KuangshiLinstener.php
 9. 
 
    
