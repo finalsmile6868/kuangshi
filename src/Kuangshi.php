@@ -69,7 +69,7 @@ class Kuangshi
         // // $notify_data = json_decode($notify_data_json,true);
         // // dump($notify_data['data'][0]);
         //验证回调签名
-        return Sign::notifyCheck(json_encode($response_body), $cnonce, $ctimestamp, $csign);
+        return Sign::notifyCheck(json_encode($response_body), $cnonce, $ctimestamp, $csign,$notify_url);
 
     }
 }
