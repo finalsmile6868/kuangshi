@@ -60,4 +60,16 @@ class Kuangshi
         ]);
         return $contents;
     }
+
+    public function checkNotify($request, $notify_url=''){
+        $cnonce = $request->header('cnonce')[0];
+        $ctimestamp = $request->header('ctimestamp')[0];
+        $csign = $request->header('csign')[0];
+        $response_body = $request->all();
+        // // $notify_data = json_decode($notify_data_json,true);
+        // // dump($notify_data['data'][0]);
+        //验证回调签名
+        return Sign::notifyCheck(json_encode($response_body), $cnonce, $ctimestamp, $csign);
+
+    }
 }

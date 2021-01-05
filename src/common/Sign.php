@@ -114,10 +114,10 @@ class Sign
         ];
     }
 
-    public static function notifyCheck($reqParamJson, $cnonce, $ctimestamp, $notify_csign)
+    public static function notifyCheck($reqParamJson, $cnonce, $ctimestamp, $notify_csign,$notify_url='')
     {        
         
-        $requestURI = sprintf('/%s/notify',config('kuangshi.route.prefix'));
+        $requestURI = $notify_url? $notify_url : sprintf('/%s/notify',config('kuangshi.route.prefix'));
 
         $secretKey = config('kuangshi.SecretKey');
         $cappkey = config('kuangshi.AppKey');
