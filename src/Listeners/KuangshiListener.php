@@ -2,7 +2,7 @@
 
 namespace Finalsmile6868\Kuangshi\Listeners;
 
-use App\Events\KuangshiEvent;
+use Finalsmile6868\Kuangshi\Evnents\KuangshiEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;

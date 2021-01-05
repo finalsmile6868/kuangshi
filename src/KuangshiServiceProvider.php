@@ -16,11 +16,12 @@ class KuangshiServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes.php');
+       
         $this->loadMigrationsFrom(__DIR__.'/../migrations'); 
         $source = __DIR__.'/../config/kuangshi.php';
 
         if ($this->app instanceof LaravelApplication) {
+             $this->loadRoutesFrom(__DIR__.'/../routes.php');
             if($this->app->runningInConsole()){
                 $this->publishes([
                     // __DIR__.'/../resources/views'=>base_path('resources/views/vendor/kuangshi'), // 发布视图目录到resources下
