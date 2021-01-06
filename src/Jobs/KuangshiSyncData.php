@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\DB;
 
 class KuangshiSyncData implements ShouldQueue
 {
@@ -39,6 +40,16 @@ class KuangshiSyncData implements ShouldQueue
             foreach ($data['list'] as $item) {
                 $item['groupList'] = json_encode($item['groupList']);
                 $person = KuangshiPerson::where('uuid', $item['uuid'])->first();
+                //查找老师ID
+                $item['user_type'] = KuangshiPerson::USER_TYPE_STUDENT;
+                $item['user_id'] = 0;
+                if($item['phone'] && key_exists('ext',$item) && $item['ext']=='教师'){
+                    $teacher = DB::table('teachers')->where('phone',$item['phone'])->first(['id','phone']);
+                    if($teacher){
+                        $item['user_id'] = $teacher->id;
+                        $item['user_type'] = KuangshiPerson::USER_TYPE_TEACHER;
+                    }
+                }
                 if ($person) {
                     $person->update($item);
                 } else {

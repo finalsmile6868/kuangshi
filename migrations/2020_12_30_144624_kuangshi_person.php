@@ -23,7 +23,7 @@ class KuangshiPerson extends Migration
             $table->string('email')->default('')->comment('邮箱，唯一');
             $table->bigInteger('entryTime')->default(0)->comment('入职时间，时间戳，精确到毫秒');
             $table->string('ext', 100)->default('')->comment('备注，只有员工才有');
-            $table->json('groupList')->nullable()->comment('人员所属组列表');
+            $table->string('groupList',500)->nullable()->comment('人员所属组列表');
             $table->string('groupName', 100)->default('')->comment('组名');
             $table->string('groupUuid', 100)->default('')->comment('组UUID');
             $table->string('identifyNum', 100)->default('')->comment('证件号');
